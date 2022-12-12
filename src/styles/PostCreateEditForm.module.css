@@ -1,0 +1,7 @@
+.Container {
+    min-height: 343px;
+  }
+
+  .Row {
+    height: calc(100vh - 81px);
+  }
