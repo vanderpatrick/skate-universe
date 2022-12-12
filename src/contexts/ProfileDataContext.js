@@ -20,7 +20,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   const handleFollow = async (clickedProfile) => {
     try {
-      const { data } = await axiosRes.post("/followers/", {
+      const { data } = await axiosRes.post("/follows/", {
         followed: clickedProfile.id,
       });
 
@@ -45,7 +45,7 @@ export const ProfileDataProvider = ({ children }) => {
 
   const handleUnfollow = async (clickedProfile) => {
     try {
-      await axiosRes.delete(`/followers/${clickedProfile.following_id}/`);
+      await axiosRes.delete(`/follows/${clickedProfile.following_id}`);
 
       setProfileData((prevState) => ({
         ...prevState,
