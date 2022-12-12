@@ -18,8 +18,10 @@ const Post = (props) => {
     owner,
     profile_id,
     profile_image,
+    dislike_id,
     comments_count,
-    likes_count,
+    dislike_count,
+    like_count,
     like_id,
     title,
     content,
@@ -53,7 +55,26 @@ const Post = (props) => {
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
-            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+            ? { ...post, like_count: post.like_count + 1, like_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+  const handleDislike = async () => {
+    try {
+      const { data } = await axiosRes.post("/dislikes/", { post: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? {
+                ...post,
+                dislike_count: post.dislike_count + 1,
+                dislike_id: data.id,
+              }
             : post;
         }),
       }));
@@ -64,12 +85,27 @@ const Post = (props) => {
 
   const handleUnlike = async () => {
     try {
-      await axiosRes.delete(`/likes/${like_id}/`);
+      await axiosRes.delete(`/likes/${like_id}`);
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
-            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+            ? { ...post, like_count: post.like_count - 1, like_id: null }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+  const handleRemoveDislike = async () => {
+    try {
+      await axiosRes.delete(`/dislikes/${dislike_id}`);
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, dislike_count: post.dislike_count - 1, like_id: null }
             : post;
         }),
       }));
@@ -112,7 +148,7 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span onClick={handleUnlike}>
+            <span className="mx-2" onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
@@ -127,12 +163,14 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          {likes_count}
+          {like_count}
+          
           <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comments_count}
         </div>
+        
       </Card.Body>
     </Card>
   );
