@@ -105,7 +105,7 @@ const Post = (props) => {
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
-            ? { ...post, dislike_count: post.dislike_count - 1, like_id: null }
+            ? { ...post, dislike_count: post.dislike_count - 1, dislike_id: null }
             : post;
         }),
       }));
@@ -148,7 +148,7 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span className="mx-2" onClick={handleUnlike}>
+            <span  onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
@@ -164,13 +164,36 @@ const Post = (props) => {
             </OverlayTrigger>
           )}
           {like_count}
-          
-          <Link to={`/posts/${id}`}>
+
+          <Link  to={`/posts/${id}`}>
             <i className="far fa-comments" />
+            {comments_count}
           </Link>
-          {comments_count}
+        {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          ) : dislike_id ? (
+            <span className="mx-2" onClick={handleRemoveDislike}>
+              <i className={`fas fa-heart ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={handleDislike}>
+              <i className={`far fa-heart ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to like posts!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          )}
+          {dislike_count}
         </div>
-        
       </Card.Body>
     </Card>
   );
