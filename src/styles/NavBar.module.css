@@ -1,10 +1,11 @@
 .NavBar {
   background-color: #ffffff;
   border: 0.5px solid #dadadf;
+  padding-bottom:0;
 }
 .NavLink {
   text-decoration: none;
-  padding-left: 20px;
+  padding: 7px;
 }
 .NavLinkMargin {
   margin-top: 6px;
