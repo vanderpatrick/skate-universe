@@ -10,7 +10,9 @@
   text-align: center;
   padding: 10px;
 }
-
+.Test{
+  border-radius: 100px;
+}
 .Header {
   font-style: normal;
   font-weight: bold;
