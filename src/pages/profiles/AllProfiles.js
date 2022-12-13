@@ -8,18 +8,20 @@ import styles from "../../styles/AllProfiles.module.css";
 import Asset from "../../components/Asset";
 
 const AllProfiles = ({ mobile }) => {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
+
   const [profileData, setProfileData] = useState({
     // we will use the pageProfile later!
     pageProfile: { results: [] },
     popularProfiles: { results: [] },
   });
   const { popularProfiles } = profileData;
-  const currentUser = useCurrentUser();
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          "/profiles/"
+          `/profiles/?owner__followed__owner__profile=${profile_id}`
         );
         setProfileData((prevState) => ({
           ...prevState,
@@ -31,12 +33,12 @@ const AllProfiles = ({ mobile }) => {
     };
 
     handleMount();
-  }, [currentUser]);
+  }, [currentUser, profile_id] );
   let result = [];
   let temp = [];
 
   popularProfiles.results.forEach((item, index) => {
-    if (temp.length === 3) {
+    if (temp.length === 4) {
       result.push(temp);
       temp = [];
     }
@@ -55,7 +57,7 @@ const AllProfiles = ({ mobile }) => {
     >
       {result.length ? (
         <>
-          <h3>All Profiles</h3>
+          <h3>Your followed profiles</h3>
           {mobile ? <><div className=" d-flex  justify-content-between">
             <Carousel className={`${styles.Carousel} `}>
               {result.map((arr, index) => (
