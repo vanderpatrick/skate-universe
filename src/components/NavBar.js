@@ -43,19 +43,19 @@ const NavBar = () => {
           placement="bottom"
           overlay={<Tooltip>Add post</Tooltip>}
         >
-          <i class="fa-solid fa-camera"></i>
+          <i className="fa-solid fa-camera"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/posts/create"
+        to="/videos/create"
       >
         <OverlayTrigger
           placement="bottom"
           overlay={<Tooltip>Add Videos</Tooltip>}
         >
-          <i class="fa-solid fa-video"></i>
+          <i className="fa-solid fa-video"></i>
         </OverlayTrigger>
       </NavLink>
     </>
@@ -71,7 +71,7 @@ const NavBar = () => {
           placement="bottom"
           overlay={<Tooltip>Skate clips</Tooltip>}
         >
-          <i class="fa-solid fa-play"></i>
+          <i className="fa-solid fa-play"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
@@ -83,7 +83,7 @@ const NavBar = () => {
           placement="bottom"
           overlay={<Tooltip>Favorites</Tooltip>}
         >
-          <i class="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink

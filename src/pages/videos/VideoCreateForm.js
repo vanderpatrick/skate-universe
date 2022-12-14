@@ -149,7 +149,6 @@ function VideoCreateForm() {
             <Form.Group className="text-center">
               {video ? (
                 <>
-                    {/* <Image className={appStyles.Image} src={video} rounded /> */}
                     <video src={video} className={`${appStyles.Image} mt-4`} controls></video>
                   <div>
                     <Form.Label

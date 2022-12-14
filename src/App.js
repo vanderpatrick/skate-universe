@@ -15,6 +15,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import NotFound from "./components/NotFound";
 import VideoCreateForm from "./pages/videos/VideoCreateForm";
+import VideoPostPage from "./pages/videos/VideoPostPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -56,6 +57,7 @@ function App() {
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
           <Route exact path="/videos/create" render={() => <VideoCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
+          <Route exact path="/videos/:id" render={() => <VideoPostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
