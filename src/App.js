@@ -16,6 +16,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import NotFound from "./components/NotFound";
 import VideoCreateForm from "./pages/videos/VideoCreateForm";
 import VideoPostPage from "./pages/videos/VideoPostPage";
+import VideoPostsPages from "./pages/videos/VideoPostsPages";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -32,6 +33,13 @@ function App() {
               <PostsPage message="No results found. Adjust the search keyword." />
             )}
           />
+        <Route
+            exact
+            path="/videos"
+            render={() => (
+              <VideoPostsPages message="No results found. Adjust the search keyword." />
+            )}
+          />
           <Route
             exact
             path="/feed"
@@ -44,7 +52,7 @@ function App() {
           />
           <Route
             exact
-            path="/liked"
+            path="/dislikes"
             render={() => (
               <PostsPage
                 message="No results found. Adjust the search keyword or like a post."

@@ -65,7 +65,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/feed"
+        to="/videos"
       >
         <OverlayTrigger
           placement="bottom"
@@ -77,7 +77,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/liked"
+        to="/favorites"
       >
         <OverlayTrigger
           placement="bottom"
@@ -89,7 +89,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/liked"
+        to="/dislikes"
       >
         <OverlayTrigger
           placement="bottom"
