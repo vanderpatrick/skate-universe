@@ -2,9 +2,10 @@ import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 const Video = (props) => {
   const {
     id,
@@ -26,6 +27,7 @@ const Video = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory()
 
   const handleVideoLike = async () => {
     try {
@@ -103,6 +105,19 @@ const Video = (props) => {
     }
   };
 
+  const handleEdit = () => {
+    history.push(`/videos/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/videos/${id}`);
+      history.goBack();
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -112,7 +127,12 @@ const Video = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && videoPost && "..."}
+            {is_owner && videoPost && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
