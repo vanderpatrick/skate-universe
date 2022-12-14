@@ -21,7 +21,7 @@ const Video = (props) => {
     video,
     updated_at,
     videoPost,
-    setVideos,
+    setVideo,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -30,16 +30,40 @@ const Video = (props) => {
   const handleVideoLike = async () => {
     try {
       const { data } = await axiosRes.post("/videolikes/", { video: id });
-      setVideos((prevVideos) => ({
+      setVideo((prevVideos) => ({
         ...prevVideos,
         results: prevVideos.results.map((video) => {
           return video.id === id
-            ? { ...video, video_likes: video.video_likes + 1, video_like_id: data.id }
+            ? {
+                ...video,
+                video_likes: video.video_likes + 1,
+                video_like_id: data.id,
+              }
             : video;
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
+    }
+  };
+
+  const handleVideoUnlike = async () => {
+    try {
+      await axiosRes.delete(`/videolikes/${video_like_id}`);
+      setVideo((prevVideos) => ({
+        ...prevVideos,
+        results: prevVideos.results.map((video) => {
+          return video.id === id
+            ? {
+                ...video,
+                video_likes: video.video_likes - 1,
+                video_like_id: null,
+              }
+            : video;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -69,7 +93,7 @@ const Video = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : video_like_id ? (
-            <span onClick={() => {}}>
+            <span onClick={handleVideoUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
