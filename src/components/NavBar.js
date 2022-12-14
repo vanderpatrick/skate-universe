@@ -2,9 +2,10 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -13,6 +14,7 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
+import { Tooltip } from "react-bootstrap";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -31,13 +33,32 @@ const NavBar = () => {
   };
 
   const addPostIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/posts/create"
-    >
-      <i className="far fa-plus-square"></i>
-    </NavLink>
+    <>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/posts/create"
+      >
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Add post</Tooltip>}
+        >
+          <i class="fa-solid fa-camera"></i>
+        </OverlayTrigger>
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/posts/create"
+      >
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Add Videos</Tooltip>}
+        >
+          <i class="fa-solid fa-video"></i>
+        </OverlayTrigger>
+      </NavLink>
+    </>
   );
   const loggedInIcons = (
     <>
@@ -46,14 +67,36 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/feed"
       >
-        <i className="fas fa-stream"></i>
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Skate clips</Tooltip>}
+        >
+          <i class="fa-solid fa-play"></i>
+        </OverlayTrigger>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/liked"
       >
-        <i className="fas fa-heart"></i>
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Favorites</Tooltip>}
+        >
+          <i class="fa-solid fa-star"></i>
+        </OverlayTrigger>
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/liked"
+      >
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Disliked</Tooltip>}
+        >
+          <i className="fa-solid fa-thumbs-down"></i>
+        </OverlayTrigger>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>
@@ -62,7 +105,11 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <Avatar src={currentUser?.profile_image} text={currentUser?.username} height={40} />
+        <Avatar
+          src={currentUser?.profile_image}
+          text={currentUser?.username}
+          height={40}
+        />
       </NavLink>
     </>
   );
@@ -73,14 +120,21 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/signin"
       >
-        <i className="fas fa-sign-in-alt"></i>
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>Log in</Tooltip>}>
+          <i className="fas fa-sign-in-alt"></i>
+        </OverlayTrigger>
       </NavLink>
       <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fas fa-user-plus"></i>
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Register</Tooltip>}
+        >
+          <i className="fas fa-user-plus"></i>
+        </OverlayTrigger>
       </NavLink>
     </>
   );
@@ -112,7 +166,12 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
-              <i className="fas fa-home"></i>
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>Home</Tooltip>}
+              >
+                <i className="fas fa-home"></i>
+              </OverlayTrigger>
             </NavLink>
 
             {currentUser ? loggedInIcons : loggedOutIcons}
