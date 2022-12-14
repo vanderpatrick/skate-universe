@@ -9,10 +9,7 @@ import Asset from "../../components/Asset";
 
 const AllProfiles = ({ mobile }) => {
   const currentUser = useCurrentUser();
-  const profile_id = currentUser?.profile_id || "";
-
   const [profileData, setProfileData] = useState({
-    // we will use the pageProfile later!
     pageProfile: { results: [] },
     popularProfiles: { results: [] },
   });
@@ -21,7 +18,7 @@ const AllProfiles = ({ mobile }) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/profiles/?owner__followed__owner__profile=${profile_id}`
+          `/profiles`
         );
         setProfileData((prevState) => ({
           ...prevState,
@@ -33,12 +30,12 @@ const AllProfiles = ({ mobile }) => {
     };
 
     handleMount();
-  }, [currentUser, profile_id] );
+  }, [currentUser] );
   let result = [];
   let temp = [];
 
   popularProfiles.results.forEach((item, index) => {
-    if (temp.length === 4) {
+    if (temp.length === 2) {
       result.push(temp);
       temp = [];
     }
@@ -57,10 +54,10 @@ const AllProfiles = ({ mobile }) => {
     >
       {result.length ? (
         <>
-          <h3>Your followed profiles</h3>
+          <h3>Recent members</h3>
           {mobile ? <><div className=" d-flex  justify-content-between">
             <Carousel className={`${styles.Carousel} `}>
-              {result.map((arr, index) => (
+              { result.map((arr, index) => (
                 <Carousel.Item key={index} className={styles.CarouselItem}>
                   <div className={styles.Carousel}>
                     {arr.map((profile, ind) => (
