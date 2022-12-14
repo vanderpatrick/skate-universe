@@ -67,6 +67,42 @@ const Video = (props) => {
     }
   };
 
+  const handleDislike = async () => {
+    try {
+      const { data } = await axiosRes.post("/videodislikes/", { video: id });
+      setVideo((prevVideos) => ({
+        ...prevVideos,
+        results: prevVideos.results.map((video) => {
+          return video.id === id
+            ? {
+                ...video,
+                video_dislike: video.video_dislike + 1,
+                video_dislike_id: data.id,
+              }
+            : video;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
+  const handleRemoveDislike = async () => {
+    try {
+      await axiosRes.delete(`/videodislikes/${video_dislike_id}`);
+      setVideo((prevVideos) => ({
+        ...prevVideos,
+        results: prevVideos.results.map((video) => {
+          return video.id === id
+            ? { ...video, video_dislike: video.video_dislike - 1, video_dislike_id: null }
+            : video;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -121,11 +157,11 @@ const Video = (props) => {
               <i className="fa-solid fa-thumbs-down" />
             </OverlayTrigger>
           ) : video_dislike_id ? (
-            <span className="mx-2">
+            <span className="mx-2" onClick={handleRemoveDislike}>
               <i className={`fa-solid fa-thumbs-down ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
-            <span>
+            <span onClick={handleDislike}>
               <i className={`fa-solid fa-thumbs-down ${styles.HeartOutline}`} />
             </span>
           ) : (
