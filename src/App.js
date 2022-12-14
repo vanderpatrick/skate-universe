@@ -14,6 +14,7 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import NotFound from "./components/NotFound";
+import VideoCreateForm from "./pages/videos/VideoCreateForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -53,6 +54,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+          <Route exact path="/videos/create" render={() => <VideoCreateForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
