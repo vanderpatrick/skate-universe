@@ -25,10 +25,12 @@ import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import Video from "../videos/Video";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
+  const [profileVideos, setProfileVideos] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const { id } = useParams();
@@ -42,16 +44,18 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profilePosts }] =
+        const [{ data: pageProfile }, { data: profilePosts }, {data: profileVideos}] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}`),
             axiosReq.get(`/posts/?owner__profile=${id}`),
+            axiosReq.get(`/videos/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfilePosts(profilePosts);
+        setProfileVideos(profileVideos);
         setHasLoaded(true);
       } catch (err) {
         // console.log(err);
@@ -135,15 +139,48 @@ function ProfilePage() {
       )}
     </>
   );
+  const mainProfileVideos = (
+    <>
+      <hr />
+      <p className="text-center">{profile?.owner}'s Videos</p>
+      <hr />
+      {profileVideos.results.length ? (
+        <InfiniteScroll
+          children={profileVideos.results.map((video) => (
+            <Video key={video.id} {...video} setVideo={setProfileVideos} />
+          ))}
+          dataLength={profileVideos.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileVideos.next}
+          next={() => fetchMoreData(profileVideos, setProfileVideos)}
+        />
+      ) : (
+        <Asset
+          src={NoResults}
+          message={`No results found, ${profile?.owner} hasn't posted yet.`}
+        />
+      )}
+    </>
+  );
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Col className="py-2 p-0 p-lg-2" lg={12}>
         <PopularProfiles mobile />
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
               {mainProfile}
+            </>
+          ) : (
+            <Asset spinner />
+          )}
+        </Container>
+      </Col>
+      <Col lg={6} className=" d-lg-block p-0 p-lg-2">
+        <Container className={appStyles.Content}>
+          {hasLoaded ? (
+            <>
               {mainProfilePosts}
             </>
           ) : (
@@ -151,8 +188,16 @@ function ProfilePage() {
           )}
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
+      <Col lg={6} className=" d-lg-block p-0 p-lg-2">
+        <Container className={appStyles.Content}>
+          {hasLoaded ? (
+            <>
+              {mainProfileVideos}
+            </>
+          ) : (
+            <Asset spinner />
+          )}
+        </Container>
       </Col>
     </Row>
   );

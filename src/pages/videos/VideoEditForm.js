@@ -17,12 +17,12 @@ import { axiosReq } from "../../api/axiosDefaults";
 function VideoEditForm() {
   const [errors, setErrors] = useState({});
 
-  const [postData, setPostData] = useState({
+  const [videoData, setVideoData] = useState({
     title: "",
     content: "",
     video: "",
   });
-  const { title, content, video } = postData;
+  const { title, content, video } = videoData;
 
   const videoInput = useRef(null);
   const history = useHistory();
@@ -33,8 +33,9 @@ function VideoEditForm() {
       try {
         const { data } = await axiosReq.get(`/videos/${id}`);
         const { title, content, video, is_owner } = data;
+        console.log(data)
 
-        is_owner ? setPostData({ title, content, video }) : history.push("/");
+        is_owner ? setVideoData({ title, content, video }) : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -44,8 +45,8 @@ function VideoEditForm() {
   }, [history, id]);
 
   const handleChange = (event) => {
-    setPostData({
-      ...postData,
+    setVideoData({
+      ...videoData,
       [event.target.name]: event.target.value,
     });
   };
@@ -53,8 +54,8 @@ function VideoEditForm() {
   const handleChangeVideo = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(video);
-      setPostData({
-        ...postData,
+      setVideoData({
+        ...videoData,
         video: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -67,10 +68,9 @@ function VideoEditForm() {
     formData.append("title", title);
     formData.append("content", content);
 
-    if (videoInput?.current?.files[1]) {
-      formData.append("video", videoInput.current.files[1]);
+    if (videoInput?.current?.files[0]) {
+      formData.append("video", videoInput.current.files[0]);
     }
-console.log(videoInput)
     try {
       await axiosReq.put(`/videos/${id}`, formData);
       history.push(`/videos/${id}`);
@@ -81,6 +81,7 @@ console.log(videoInput)
       }
     }
   };
+  console.log(videoInput)
 
   const textFields = (
     <div className="text-center">

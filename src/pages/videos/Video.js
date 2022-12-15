@@ -165,7 +165,7 @@ const Video = (props) => {
             </OverlayTrigger>
           )}
           {video_likes}
-          <Link to={`/posts/${id}`}>
+          <Link to={`/videos/${id}`}>
             <i className="far fa-comments" />
             {video_comments}
           </Link>
