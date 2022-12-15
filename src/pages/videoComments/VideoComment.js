@@ -3,8 +3,7 @@ import Media from "react-bootstrap/Media";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
-// import CommentEditForm from "./CommentEditForm";
-
+import VideoCommentEditForm from "./VideoCommentEditForm"
 import styles from "../../styles/Comment.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -55,15 +54,14 @@ const VideoComment = (props) => {
           <span className={styles.Owner}>{owner}</span>
           <span className={styles.Date}>{updated_at}</span>
           {showEditForm ? (
-            // <CommentEditForm
-            //   id={id}
-            //   profile_id={profile_id}
-            //   content={content}
-            //   profileImage={profile_image}
-            //   setComments={setComments}
-            //   setShowEditForm={setShowEditForm}
-            // />
-            <></>
+            <VideoCommentEditForm
+              id={id}
+              profile_id={profile_id}
+              content={content}
+              profileImage={profile_image}
+              setVideoComments={setVideoComments}
+              setShowEditForm={setShowEditForm}
+            />
           ) : (
             <p>{content}</p>
           )}

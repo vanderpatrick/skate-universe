@@ -17,7 +17,7 @@ import NotFound from "./components/NotFound";
 import VideoCreateForm from "./pages/videos/VideoCreateForm";
 import VideoPostPage from "./pages/videos/VideoPostPage";
 import VideoPostsPages from "./pages/videos/VideoPostsPages";
-
+import VideoEditForm from "./pages/videos/VideoEditForm";
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
@@ -67,6 +67,7 @@ function App() {
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/videos/:id" render={() => <VideoPostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+          <Route exact path="/videos/:id/edit" render={() => <VideoEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
             exact
