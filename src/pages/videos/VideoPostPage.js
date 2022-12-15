@@ -5,36 +5,71 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Video from "./Video";
+import VideoComment from "../videoComments/VideoComment";
+import VideoCommnetCreateForm from "../videoComments/VideoCommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function VideoPostPage() {
   const { id } = useParams();
-  const [video, setVideo] = useState({results: []})
+  const [video, setVideo] = useState({ results: [] });
 
-  useEffect(()=> {
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [videoComment, setVideoComments] = useState({ results: [] });
+
+  useEffect(() => {
     const handleMount = async () => {
-        try{
-            const [{data: video}] = await Promise.all([
-                axiosReq.get(`/videos/${id}`)
-            ])
-            setVideo({results: [video]})
-            console.log(video)
+      try {
+        const [{ data: video }, { data: videoComment }] = await Promise.all([
+          axiosReq.get(`/videos/${id}`),
+          axiosReq.get(`/videocomments/?video=${id}`),
+        ]);
+        setVideo({ results: [video] });
+        setVideoComments(videoComment);
+        console.log(video);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-        }catch(err){
-            console.log(err)
-        }
-    }
-    handleMount()
-  }, [id])
+    handleMount();
+  }, [id]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-        <Video {...video.results[0]} setVideo={setVideo} videoPost/>
-        <Container className={appStyles.Content}>Comments</Container>
+        <Video {...video.results[0]} setVideo={setVideo} postPage />
+        <Container className={appStyles.Content}>
+          {currentUser ? (
+            <VideoCommnetCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              video={id}
+              setVideo={setVideo}
+              setVideoComments={setVideoComments}
+            />
+          ) : videoComment.results.length ? (
+            "Comments"
+          ) : null}
+          {videoComment.results.length ? (
+            videoComment.results.map((videoComment) => (
+              <VideoComment
+                key={videoComment.id}
+                {...videoComment}
+                setVideo={setVideo}
+                setVideoComments={setVideoComments}
+              />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet, be the first to comment!</span>
+          ) : (
+            <span>No comments... yet</span>
+          )}
+        </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         Popular profiles for desktop

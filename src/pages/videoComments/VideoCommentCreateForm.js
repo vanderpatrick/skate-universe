@@ -22,9 +22,9 @@ function VideoCommentCreateForm(props) {
         content,
         video,
       });
-      setComments((setVideoComments) => ({
-        ...setVideoComments,
-        results: [data, ...setVideoComments.results],
+      setVideoComments((prevVideoComments) => ({
+        ...prevVideoComments,
+        results: [data, ...prevVideoComments.results],
       }));
       setVideo((prevVideo) => ({
         results: [
@@ -62,7 +62,7 @@ function VideoCommentCreateForm(props) {
         disabled={!content.trim()}
         type="submit"
       >
-        video
+        Post
       </button>
     </Form>
   );
