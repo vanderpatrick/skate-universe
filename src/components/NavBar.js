@@ -69,37 +69,43 @@ const NavBar = () => {
       >
         <OverlayTrigger
           placement="bottom"
-          overlay={<Tooltip>Skate clips</Tooltip>}
+          overlay={<Tooltip> Clips</Tooltip>}
         >
+          
           <i className="fa-solid fa-play"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/favorites"
+        to="/videos/favorites"
       >
         <OverlayTrigger
           placement="bottom"
-          overlay={<Tooltip>Favorites</Tooltip>}
+          overlay={<Tooltip>Favorite Clips</Tooltip>}
         >
-          <i className="fa-solid fa-star"></i>
+          <i class="fa-regular fa-file-video"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/dislikes"
+        to="/posts/favorites"
       >
         <OverlayTrigger
           placement="bottom"
-          overlay={<Tooltip>Disliked</Tooltip>}
+          overlay={<Tooltip>Favorite Posts</Tooltip>}
         >
-          <i className="fa-solid fa-thumbs-down"></i>
+          <i className="fa-solid fa-star"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>
+      <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>LogOut</Tooltip>}
+        >
+                  <i className="fas fa-sign-out-alt"></i>
+        </OverlayTrigger>
       </NavLink>
       <NavLink
         className={styles.NavLink}
@@ -142,9 +148,10 @@ const NavBar = () => {
   return (
     <Navbar
       expanded={expanded}
-      className={styles.NavBar}
+      className={`${styles.NavBar} ml-auto`}
       expand="md"
       fixed="top"
+      navbarScroll
     >
       <Container>
         <NavLink to="/">
@@ -156,10 +163,10 @@ const NavBar = () => {
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
-          aria-controls="basic-navbar-nav"
+          aria-controls="navbarScroll"
         />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
+        <Navbar.Collapse className="ml-auto" id="navbarScroll">
+          <Nav className="ml-auto text-center">
             <NavLink
               exact
               className={styles.NavLink}
