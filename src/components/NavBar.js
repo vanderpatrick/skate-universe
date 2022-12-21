@@ -149,10 +149,11 @@ const NavBar = () => {
       navbarScroll
     >
       <Container>
-        <NavLink to="/">
+        <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
+            <img src={logo} alt="logo" height="30" />
           </Navbar.Brand>
+          Skate Universe
         </NavLink>
         {currentUser && addPostIcon}
         <Navbar.Toggle
