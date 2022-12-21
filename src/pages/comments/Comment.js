@@ -64,7 +64,7 @@ const Comment = (props) => {
               setShowEditForm={setShowEditForm}
             />
           ) : (
-            <p>{content}</p>
+            <p className="styles.Color">{content}</p>
           )}
         </Media.Body>
         {is_owner && !showEditForm && (

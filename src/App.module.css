@@ -1,6 +1,12 @@
 .App {
-  font-family: 'Martian Mono', monospace;
-  background-color: #f8f8f8;
+  font-family: "Martian Mono", monospace;
+  background: rgb(1, 9, 43);
+  background: linear-gradient(
+    90deg,
+    rgba(1, 9, 43, 1) 2%,
+    rgba(2, 107, 128, 1) 51%,
+    rgba(9, 9, 121, 1) 100%
+  );
   min-height: 100vh;
 }
 
@@ -9,7 +15,6 @@
 }
 
 .Content {
-  background-color: #ffffff;
   padding: 10px;
   border-radius: 2px;
   border: 1px solid #dadadf;
@@ -41,7 +46,7 @@ a:hover {
 }
 
 a:hover i {
-  color: #2142b2;
+  color: black;
   transition: color ease-in-out 0.3s;
 }
 
@@ -59,7 +64,7 @@ i {
 i:hover {
   cursor: pointer;
   transition: color ease-in-out 0.3s;
-  color: #2142b2;
+  color: black;
 }
 
 figure {

@@ -32,7 +32,8 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = (
+  const addPostIcon = <></>;
+  const loggedInIcons = (
     <>
       <NavLink
         className={styles.NavLink}
@@ -58,11 +59,6 @@ const NavBar = () => {
           <i className="fa-solid fa-video"></i>
         </OverlayTrigger>
       </NavLink>
-    </>
-  );
-  const loggedInIcons = (
-    <>
-        
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -149,7 +145,11 @@ const NavBar = () => {
       navbarScroll
     >
       <Container>
-        <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/">
+        <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          to="/"
+        >
           <Navbar.Brand>
             <img src={logo} alt="logo" height="30" />
           </Navbar.Brand>
@@ -157,12 +157,13 @@ const NavBar = () => {
         </NavLink>
         {currentUser && addPostIcon}
         <Navbar.Toggle
+          className="{styles.Test}"
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="navbarScroll"
         />
         <Navbar.Collapse className="ml-auto" id="navbarScroll">
-          <Nav className="ml-auto text-center">
+          <Nav className="ml-auto text-left">
             <NavLink
               exact
               className={styles.NavLink}

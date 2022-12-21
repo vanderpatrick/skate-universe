@@ -1,19 +1,25 @@
 .SearchBar input {
-    border-radius: 20px;
-    color: #242a3d;
-    padding-left: 40px;
-    margin-bottom: 16px;
-  }
-  
-  .SearchIcon {
-    position: absolute;
-    font-size: 1.2rem;
-    padding: 9px;
-    padding-left: 15px;
-  }
-  
-  .SearchIcon:hover {
-    cursor: default;
-    color: #cfced3;
-  }
-  
+  border-radius: 20px;
+  color: #242a3d;
+  padding-left: 40px;
+  margin-bottom: 16px;
+  background: rgb(1, 9, 43);
+  background: linear-gradient(
+    90deg,
+    rgba(1, 9, 43, 1) 2%,
+    rgba(2, 107, 128, 1) 51%,
+    rgba(9, 9, 121, 1) 100%
+  );
+}
+
+.SearchIcon {
+  position: absolute;
+  font-size: 1.2rem;
+  padding: 9px;
+  padding-left: 15px;
+}
+
+.SearchIcon:hover {
+  cursor: default;
+  color: #cfced3;
+}

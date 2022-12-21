@@ -4,13 +4,14 @@ import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
+import styles from "../../styles/PopularProfiles.module.css"
 
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
 
   return (
     <Container
-      className={`${appStyles.Content} ${
+      className={`${appStyles.Content} ${styles.BG} ${
         mobile && "d-lg-none text-center mb-3"
       }`}
     >
@@ -18,7 +19,7 @@ const PopularProfiles = ({ mobile }) => {
         <>
           <p>Most followed profiles.</p>
           {mobile ? (
-            <div className="d-flex justify-content-around">
+            <div className={`d-flex justify-content-around  `}>
               {popularProfiles.results.slice(0, 4).map((profile) => (
                 <Profile key={profile.id} profile={profile} mobile />
               ))}

@@ -1,12 +1,26 @@
 .NavBar {
-  background-color: #ffffff;
-  border: 0.5px solid #dadadf;
-  padding-bottom:0;
+  padding-bottom: 0;
+  background: rgb(75, 98, 196);
+  background: linear-gradient(
+    90deg,
+    rgba(75, 98, 196, 1) 0%,
+    rgba(1, 9, 43, 0.8127626050420168) 49%,
+    rgba(75, 98, 196, 1) 100%
+  );
+  color: white;
 }
 .NavLink {
   text-decoration: none;
+  color: white;
   padding: 7px;
 }
 .NavLinkMargin {
   margin-top: 6px;
+}
+
+.NavLink:hover {
+  color: black;
+}
+.navbar.scrolling-navbar.top-nav-collapse {
+  background: #ff0000;
 }
