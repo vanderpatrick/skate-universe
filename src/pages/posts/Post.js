@@ -238,7 +238,7 @@ const Post = (props) => {
               placement="top"
               overlay={<Tooltip>You can't favorite your own post!</Tooltip>}
             >
-              <i class="fa-solid fa-bookmark"></i>
+              <i className="fa-solid fa-bookmark"></i>
             </OverlayTrigger>
           ) : post_favorite_id ? (
             <span className="mx-2" onClick={handleRemoveFavorite}>
@@ -246,17 +246,22 @@ const Post = (props) => {
             </span>
           ) : currentUser ? (
             <span onClick={handleFavorite}>
+              <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Click here to save a post</Tooltip>}
+              >
+
               <i className={`fa-solid fa-bookmark ${styles.HeartOutline}`} />
+              </OverlayTrigger>
             </span>
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to Dislike posts!</Tooltip>}
+              overlay={<Tooltip>Log in to To favorite</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
-          {post_favorite_count}
         </div>
       </Card.Body>
     </Card>

@@ -59,7 +59,7 @@ function ProfilePage() {
         console.log(pageProfile)
         setHasLoaded(true);
       } catch (err) {
-        // console.log(err);
+        
       }
     };
     fetchData();
@@ -78,10 +78,10 @@ function ProfilePage() {
         </Col>
         <Col lg={6}>
           <h3 className="m-2">{profile?.owner}</h3>
-          <Row className="justify-content-center no-gutters">
-            <Col xs={3} className="my-2">
+          <Row className={`justify-content-center no-gutters ${styles.Color}`}>
+            <Col xs={3} className=" my-2">
               <div>{profile?.posts_count}</div>
-              <div>posts</div>
+              <div className={styles.Color}>posts</div>
             </Col>
             <Col xs={3} className="my-2">
               <div>{profile?.videos_count}</div>

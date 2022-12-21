@@ -77,7 +77,7 @@ const NavBar = () => {
           placement="bottom"
           overlay={<Tooltip>Favorite Clips</Tooltip>}
         >
-          <i class="fa-regular fa-file-video"></i>
+          <i className="fa-regular fa-file-video"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
@@ -142,7 +142,7 @@ const NavBar = () => {
       className={`${styles.NavBar} ml-auto`}
       expand="md"
       fixed="top"
-      navbarScroll
+      navbarscroll="true"
     >
       <Container>
         <NavLink
