@@ -52,11 +52,11 @@ function App() {
           />
           <Route
             exact
-            path="/dislikes"
+            path="/videos/favorites"
             render={() => (
-              <PostsPage
-                message="No results found. Adjust the search keyword or like a post."
-                filter={`dislike__owner__profile=${profile_id}&ordering=-dislike__created_at&`}
+              <VideoPostsPages
+                message="No results found. Adjust the search keyword or follow a user."
+                filter={`favorites_videos__owner__profile=${profile_id}&ordering=-favorites_videos__created_at&`}
               />
             )}
           />
