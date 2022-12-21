@@ -75,7 +75,7 @@ function PostCreateForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label>Title</Form.Label>
+        <Form.Label className={appStyles.CommentsCorlor}>Title</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -89,7 +89,7 @@ function PostCreateForm() {
         </Alert>
       ))}
       <Form.Group>
-        <Form.Label>Location</Form.Label>
+        <Form.Label className={appStyles.CommentsCorlor}>Location</Form.Label>
         <Form.Control
           as="select"
           defaultValue="Selectsomething"
@@ -115,7 +115,7 @@ function PostCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Content</Form.Label>
+        <Form.Label className={appStyles.CommentsCorlor}>Content</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}

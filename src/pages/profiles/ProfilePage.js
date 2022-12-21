@@ -79,12 +79,13 @@ function ProfilePage() {
             src={profile?.image}
           />
         </Col>
-        <Col lg={6}>
-          <h3 className="m-2">{profile?.owner}</h3>
-          <Row className={`justify-content-center no-gutters ${styles.Color}`}>
+        <Col  lg={6}>
+          <h3 className={`${appStyles.CommentsCorlor}  m-2`}>{profile?.owner}</h3>
+          <Row className={`justify-content-center align-items-center ${styles.Color} ${styles.Wrap}`}>
+
             <Col xs={3} className=" my-2">
               <div>{profile?.posts_count}</div>
-              <div className={styles.Color}>posts</div>
+              <div>posts</div>
             </Col>
             <Col xs={3} className="my-2">
               <div>{profile?.videos_count}</div>
@@ -132,7 +133,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s posts</p>
+      <p className={`${appStyles.CommentsCorlor} text-center`}>{profile?.owner}'s posts</p>
       <hr />
       {profilePosts.results.length ? (
         <InfiniteScroll
@@ -180,7 +181,7 @@ function ProfilePage() {
     <Row>
       <Col className="py-2 p-0 p-lg-2" lg={12}>
         <PopularProfiles mobile />
-        <Container className={appStyles.Content}>
+        <Container className={`${appStyles.Content} ${styles.Wrap}`}>
           {hasLoaded ? <>{mainProfile}</> : <Asset spinner />}
         </Container>
       </Col>

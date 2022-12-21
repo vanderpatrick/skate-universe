@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-
+import appStyles from "../../App.module.css"
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -177,7 +177,7 @@ const Post = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
+        {content && <Card.Text  className={appStyles.Dark}>{content}</Card.Text>}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger

@@ -18,7 +18,6 @@ const Video = (props) => {
     video_dislike,
     video_dislike_id,
     video_favorite_id,
-    video_favorite_count,
     title,
     content,
     video,
@@ -29,7 +28,7 @@ const Video = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const history = useHistory()
+  const history = useHistory();
 
   const handleVideoLike = async () => {
     try {
@@ -53,7 +52,9 @@ const Video = (props) => {
 
   const handleFavorite = async () => {
     try {
-      const { data } = await axiosRes.post("/videofavorites/", { videos_favorites: id });
+      const { data } = await axiosRes.post("/videofavorites/", {
+        videos_favorites: id,
+      });
       setVideo((prevVideos) => ({
         ...prevVideos,
         results: prevVideos.results.map((video) => {
@@ -138,7 +139,11 @@ const Video = (props) => {
         ...prevVideos,
         results: prevVideos.results.map((video) => {
           return video.id === id
-            ? { ...video, video_dislike: video.video_dislike - 1, video_dislike_id: null }
+            ? {
+                ...video,
+                video_dislike: video.video_dislike - 1,
+                video_dislike_id: null,
+              }
             : video;
         }),
       }));
@@ -181,7 +186,9 @@ const Video = (props) => {
       <video src={video} controls></video>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text className="text-center">{content}</Card.Text>}
+        {content && (
+            <Card.Text className="text-center">{content}</Card.Text>
+        )}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -240,25 +247,24 @@ const Video = (props) => {
               placement="top"
               overlay={<Tooltip>You can't favortie your own video!</Tooltip>}
             >
-              <i class="fa-regular fa-bookmark" />
+              <i class="fa-solid fa-bookmark" />
             </OverlayTrigger>
           ) : video_favorite_id ? (
             <span className="mx-2" onClick={handleRemoveFavorite}>
-              <i className={`fa-regular fa-bookmark ${styles.Heart}`} />
+              <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleFavorite}>
-              <i className={`fa-regular fa-bookmark ${styles.HeartOutline}`} />
+              <i className={`fa-solid fa-bookmark ${styles.HeartOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Log in to Dislike posts!</Tooltip>}
             >
-              <i className="fa-regular fa-bookmark" />
+              <i className="fa-solid fa-bookmark" />
             </OverlayTrigger>
           )}
-          {video_favorite_count}
         </div>
       </Card.Body>
     </Card>
