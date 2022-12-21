@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { useRedirect } from "../../hooks/Redirect";
 
 import { Link, useHistory } from "react-router-dom";
 
@@ -18,7 +19,7 @@ import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
-
+  useRedirect("loggedIn");
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -53,8 +54,8 @@ function SignInForm() {
       <Col className="my-auto p-0 p-md-2">
         <Container className={`${appStyles.Content} ${styles.Border}  p-5 `}>
           <h1 className={styles.Header}>sign in</h1>
-          <Form   onSubmit={handleSubmit}>
-            <Form.Group className="mt-4"  controlId="username">
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mt-4" controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
                 type="text"

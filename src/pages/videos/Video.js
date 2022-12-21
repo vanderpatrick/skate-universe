@@ -255,7 +255,7 @@ const Video = (props) => {
               placement="top"
               overlay={<Tooltip>Log in to Dislike posts!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="fa-regular fa-bookmark" />
             </OverlayTrigger>
           )}
           {video_favorite_count}

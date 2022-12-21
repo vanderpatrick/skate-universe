@@ -259,7 +259,7 @@ const Post = (props) => {
               placement="top"
               overlay={<Tooltip>Log in to To favorite</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="fa-solid fa-bookmark" />
             </OverlayTrigger>
           )}
         </div>
