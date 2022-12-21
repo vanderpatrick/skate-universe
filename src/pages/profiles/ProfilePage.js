@@ -44,19 +44,22 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profilePosts }, {data: profileVideos}] =
-          await Promise.all([
-            axiosReq.get(`/profiles/${id}`),
-            axiosReq.get(`/posts/?owner__profile=${id}`),
-            axiosReq.get(`/videos/?owner__profile=${id}`),
-          ]);
+        const [
+          { data: pageProfile },
+          { data: profilePosts },
+          { data: profileVideos },
+        ] = await Promise.all([
+          axiosReq.get(`/profiles/${id}`),
+          axiosReq.get(`/posts/?owner__profile=${id}`),
+          axiosReq.get(`/videos/?owner__profile=${id}`),
+        ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
         setProfilePosts(profilePosts);
         setProfileVideos(profileVideos);
-        console.log(pageProfile)
+        console.log(pageProfile);
         setHasLoaded(true);
       } catch (err) {
         // console.log(err);
@@ -116,8 +119,13 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
+    </>
+  );
+  const profileBio = (
+    <>
+      <p className="text-center">{profile?.content}</p>
+
     </>
   );
 
@@ -173,35 +181,22 @@ function ProfilePage() {
       <Col className="py-2 p-0 p-lg-2" lg={12}>
         <PopularProfiles mobile />
         <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
+          {hasLoaded ? <>{mainProfile}</> : <Asset spinner />}
+        </Container>
+      </Col>
+      <Col className="py-2 p-0 p-lg-2" lg={12}>
+        <Container className={appStyles.Content}>
+          {hasLoaded ? <>{profileBio}</> : <Asset spinner />}
         </Container>
       </Col>
       <Col lg={6} className=" d-lg-block p-0 p-lg-2">
         <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfilePosts}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
+          {hasLoaded ? <>{mainProfilePosts}</> : <Asset spinner />}
         </Container>
       </Col>
       <Col lg={6} className=" d-lg-block p-0 p-lg-2">
         <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfileVideos}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
+          {hasLoaded ? <>{mainProfileVideos}</> : <Asset spinner />}
         </Container>
       </Col>
     </Row>
