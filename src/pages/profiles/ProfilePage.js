@@ -59,7 +59,7 @@ function ProfilePage() {
         console.log(pageProfile)
         setHasLoaded(true);
       } catch (err) {
-        
+        // console.log(err);
       }
     };
     fetchData();

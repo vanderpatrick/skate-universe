@@ -10,7 +10,7 @@
   text-align: center;
   padding: 10px;
 }
-.Test{
+.Border{
   border-radius: 100px;
 }
 .Header {
@@ -21,7 +21,7 @@
   text-align: center;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #2142b2;
+  color: white;
 }
 
 .Link {
@@ -29,8 +29,11 @@
   text-align: center;
   display: block;
   margin: auto;
+  color: white;
 }
-
+.Link:hover{
+  color: black;
+}
 .Link span {
   color: #ff9254;
 }
