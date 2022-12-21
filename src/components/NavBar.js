@@ -62,16 +62,13 @@ const NavBar = () => {
   );
   const loggedInIcons = (
     <>
+        
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/videos"
       >
-        <OverlayTrigger
-          placement="bottom"
-          overlay={<Tooltip> Clips</Tooltip>}
-        >
-          
+        <OverlayTrigger placement="bottom" overlay={<Tooltip> Clips</Tooltip>}>
           <i className="fa-solid fa-play"></i>
         </OverlayTrigger>
       </NavLink>
@@ -100,13 +97,11 @@ const NavBar = () => {
         </OverlayTrigger>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-      <OverlayTrigger
-          placement="bottom"
-          overlay={<Tooltip>LogOut</Tooltip>}
-        >
-                  <i className="fas fa-sign-out-alt"></i>
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>LogOut</Tooltip>}>
+          <i className="fas fa-sign-out-alt"></i>
         </OverlayTrigger>
       </NavLink>
+
       <NavLink
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}

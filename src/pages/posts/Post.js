@@ -22,6 +22,8 @@ const Post = (props) => {
     comments_count,
     dislike_count,
     like_count,
+    post_favorite_id,
+    post_favorite_count,
     like_id,
     title,
     content,
@@ -57,6 +59,40 @@ const Post = (props) => {
           return post.id === id
             ? { ...post, like_count: post.like_count + 1, like_id: data.id }
             : post;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+  const handleFavorite = async () => {
+    try {
+      const { data } = await axiosRes.post("/favorites/", { post_favorite: id });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post_favorite) => {
+          return post_favorite.id === id
+            ? {
+                ...post_favorite,
+                post_favorite_count: post_favorite.post_favorite_count + 1,
+                post_favorite_id: data.id,
+              }
+            : post_favorite;
+        }),
+      }));
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+  const handleRemoveFavorite = async () => {
+    try {
+      await axiosRes.delete(`/favorites/${post_favorite_id}`);
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post_favorite) => {
+          return post_favorite.id === id
+            ? { ...post_favorite, post_favorite_count: post_favorite.post_favorite_count - 1, post_favorite_id: null }
+            : post_favorite;
         }),
       }));
     } catch (err) {
@@ -105,7 +141,11 @@ const Post = (props) => {
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
-            ? { ...post, dislike_count: post.dislike_count - 1, dislike_id: null }
+            ? {
+                ...post,
+                dislike_count: post.dislike_count - 1,
+                dislike_id: null,
+              }
             : post;
         }),
       }));
@@ -148,7 +188,7 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span  onClick={handleUnlike}>
+            <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
@@ -165,11 +205,11 @@ const Post = (props) => {
           )}
           {like_count}
 
-          <Link  to={`/posts/${id}`}>
+          <Link to={`/posts/${id}`}>
             <i className="far fa-comments" />
             {comments_count}
           </Link>
-        {is_owner ? (
+          {is_owner ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>You can't Dislike your own post!</Tooltip>}
@@ -193,6 +233,30 @@ const Post = (props) => {
             </OverlayTrigger>
           )}
           {dislike_count}
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't favorite your own post!</Tooltip>}
+            >
+              <i class="fa-solid fa-bookmark"></i>
+            </OverlayTrigger>
+          ) : post_favorite_id ? (
+            <span className="mx-2" onClick={handleRemoveFavorite}>
+              <i className={`fa-solid fa-bookmark ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={handleFavorite}>
+              <i className={`fa-solid fa-bookmark ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to Dislike posts!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          )}
+          {post_favorite_count}
         </div>
       </Card.Body>
     </Card>
