@@ -56,6 +56,7 @@ function ProfilePage() {
         }));
         setProfilePosts(profilePosts);
         setProfileVideos(profileVideos);
+        console.log(pageProfile)
         setHasLoaded(true);
       } catch (err) {
         // console.log(err);
@@ -81,6 +82,10 @@ function ProfilePage() {
             <Col xs={3} className="my-2">
               <div>{profile?.posts_count}</div>
               <div>posts</div>
+            </Col>
+            <Col xs={3} className="my-2">
+              <div>{profile?.videos_count}</div>
+              <div>videos</div>
             </Col>
             <Col xs={3} className="my-2">
               <div>{profile?.followers_count}</div>
