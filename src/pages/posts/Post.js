@@ -23,6 +23,7 @@ const Post = (props) => {
     dislike_count,
     like_count,
     post_favorite_id,
+    Post_location,
     like_id,
     title,
     content,
@@ -178,6 +179,7 @@ const Post = (props) => {
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
         {content && <Card.Text  className={appStyles.Dark}>{content}</Card.Text>}
+        {Post_location && <Card.Text  className={appStyles.Dark}><span className="text-muted">Location</span> - <span className="font-weight-bold">{Post_location}</span></Card.Text>}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger

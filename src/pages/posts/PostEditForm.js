@@ -21,9 +21,10 @@ function PostEditForm() {
   const [postData, setPostData] = useState({
     title: "",
     content: "",
+    Post_location: "",
     image: "",
   });
-  const { title, content, image } = postData;
+  const { title, content, image, Post_location } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -33,9 +34,11 @@ function PostEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}`);
-        const { title, content, image, is_owner } = data;
+        const { title, content, Post_location, image, is_owner } = data;
 
-        is_owner ? setPostData({ title, content, image }) : history.push("/");
+        is_owner
+          ? setPostData({ title, content, Post_location, image })
+          : history.push("/");
       } catch (err) {
         // console.log(err);
       }
@@ -67,6 +70,7 @@ function PostEditForm() {
 
     formData.append("title", title);
     formData.append("content", content);
+    formData.append("Post_location", Post_location);
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
@@ -95,6 +99,31 @@ function PostEditForm() {
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Form.Group>
+        <Form.Label className={appStyles.CommentsCorlor}>Location</Form.Label>
+        <Form.Control
+          as="select"
+          defaultValue="Selectsomething"
+          name="Post_location"
+          aria-label="Post_location"
+          onChange={handleChange}
+        >
+          <option value="other">Other</option>
+          <option value="rail">Rail</option>
+          <option value="ledge">Ledge</option>
+          <option value="ramps">Ramps</option>
+          <option value="mini-ramp">Mini Ramps</option>
+          <option value="halfpipe">Halfpipe</option>
+          <option value="street">Street</option>
+          <option value="park">Park</option>
+          <option value="gap">Gap</option>
+        </Form.Control>
+      </Form.Group>
+      {errors?.location?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>

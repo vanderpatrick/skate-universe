@@ -113,15 +113,17 @@ const NavBar = () => {
   const loggedOutIcons = (
     <>
       <NavLink
+        role="login"
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/signin"
       >
         <OverlayTrigger placement="bottom" overlay={<Tooltip>Log in</Tooltip>}>
-          <i className="fas fa-sign-in-alt"></i>
+          <i className="fas fa-sign-in-alt">Log in</i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
+        role="register"
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
