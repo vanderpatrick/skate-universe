@@ -1,5 +1,6 @@
 {
-  "name": "moments",
+  "name": "skate-universe",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "engines": {

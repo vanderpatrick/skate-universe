@@ -52,7 +52,7 @@ function VideoPostPage() {
               setVideoComments={setVideoComments}
             />
           ) : videoComment.results.length ? (
-            "Comments"
+            <span className={appStyles.CommentsCorlor}>Comments</span>
           ) : null}
           {videoComment.results.length ? (
             videoComment.results.map((videoComment) => (

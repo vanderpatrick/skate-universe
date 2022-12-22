@@ -59,7 +59,7 @@ function PostPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            <span className={appStyles.CommentsCorlor}>Comments</span>
           ) : null}
           {comments.results.length ? (
             <InfiniteScroll
