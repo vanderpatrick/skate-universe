@@ -179,16 +179,15 @@ Testing in this application was made manually, defensive code was implemented to
 
 ![Creation image](/src/assets/readmePics/posting%20workis.png)
 
-
 - Delete
   - the user is also allowed to delete his posts in a dynamic way where all tables related to that post are also deleted(likes/comments).
 
 - favorite
   - the user is also allowed to delete his posts in a dynamic way where all tables related to that post are also deleted(likes/comments).
   - before
-  ![Creation image](/src/assets/readmePics/favorites%20before.png)
+![Creation image](/src/assets/readmePics/favorites%20before.png)
   - result 
-  ![Creation image](/src/assets/readmePics/favorite%20result.png)
+![Creation image](/src/assets/readmePics/favorite%20result.png)
 
 
 # User stories:
@@ -197,11 +196,8 @@ Testing in this application was made manually, defensive code was implemented to
 
 - GitHub kambarm board.
 
-![Kambam Board image](/static/images/kambam-board.png)
+![Kambam Board image](/src/assets/readmePics/kambamboard.png)
 
--Flow chart
-
-![Miro Flow Chart image](/static/images/flowchart.png)
 
 # Test Validators :
 
