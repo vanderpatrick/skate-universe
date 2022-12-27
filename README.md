@@ -77,7 +77,7 @@ The Features were designed to distinguish each area with ease so the user can ex
   - The user is allowed if authenticated to delete his post.
   - the same for videos
 
-![Post Delete image](/static/images/deleting.png)
+![Post Delete image](/src/assets//readmePics/post%20deletion.png)
 
 - Log in
   - The user after registration can fill in a form to login into the aplication.
@@ -154,13 +154,14 @@ Testing in this application was made manually, defensive code was implemented to
 - Logout
   - Clicking on the logout button the user is logout from his account and sent to the main page, where the user still can see all posts but wont have all the authencticated user functionality
 
-![LogOut image](/static/images/test-logout-pass.png)
 
 - Liking / disliking
   - The user is allowed to like posts when liked shows the number of likes on the page the like button becomes an unlike button reflecting directly to the database.
   - The same applys to video posts
-
-![liking system image](/static/images/test-like-pass.png)
+  - attempt
+![liking system image](/src/assets/readmePics/testinglikes-dislikes.png)
+  - result
+![liking system image](/src/assets/readmePics/post%20likes%20owrks.png)
 
 - Unliking / removing dislikes
   - The user is also allowed to unlike the posts reflecting directly to the database.
