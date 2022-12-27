@@ -145,7 +145,11 @@ Testing in this application was made manually, defensive code was implemented to
 - Profile
   - The profile is immediately created with the account registration. Pretty neat if you ask me. It also comes with two default values one for the profile image and another for the description.
 
-![Profiler image](/static/images/test-profile-pass.png)
+![Profiler image](/src/assets/readmePics/profile%20(2).png)
+![Profiler image](/src/assets/readmePics/profile%20edit.png)
+![Profiler image](/src/assets/readmePics/profile%20bio%20edit.png)
+![Profiler image](/src/assets/readmePics/result%20profile%20bio.png)
+ - The steps above confirms that account authentication and edit from profile works fine 
 
 - Logout
   - Clicking on the logout button the user is logout from his account and sent to the main page, where the user still can see all posts but wont have all the authencticated user functionality
