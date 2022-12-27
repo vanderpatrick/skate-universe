@@ -2,9 +2,9 @@
 
 ## By Patrick Alexander Lucas Van Der Flier
 
-### [Check SkateGram](https://skate-universe.herokuapp.com/)
+### [Check Skate universe](https://skate-universe.herokuapp.com/)
 
-![Responsive image from the project](/static/images/responsive.png)
+![Responsive image from the project](/src/assets/readmePics/responsive%20img.png)
 
 # SkateGram :
 
@@ -210,7 +210,8 @@ Testing in this application was made manually, defensive code was implemented to
 - Eslint newest version was first used to fix all issues in hand, then removed due to deployment issues
 - in the eslintrc.js "react/prop-types": 0, rule was add to ignore as they are in relation to code that was provided in the Moments Walkthrough project:
 
-## [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fskategram.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+## Jigsaw CSS Validator
+![css validator](/src/assets/readmePics/css%20validator.png)
 
 - All layouts passed in the jigsaw CSS Validator
 
@@ -218,12 +219,6 @@ Testing in this application was made manually, defensive code was implemented to
 
 - Some where some how the database got corrupted making inpossible for new users to follow other users, and like/dislike posts. The solution was a simple database reset
 - Version control was relevante during the development of this project, eslint was an controlled issue, i've decided to use it and correct as much as possible, and then remove it, and leave it as the default version that comes with react-create-app.
-
-## lighthouse
-
-- The rating of the application was acceptable with a good performance rating.
-
-![Light House image](/static/images/light-house.png)
 
 # Deployment :
 

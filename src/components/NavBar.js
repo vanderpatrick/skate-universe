@@ -145,7 +145,7 @@ const NavBar = () => {
       fixed="top"
       navbarscroll="true"
     >
-      <Container>
+      <Container fluid>
         <NavLink
           className={styles.NavLink}
           activeClassName={styles.Active}
