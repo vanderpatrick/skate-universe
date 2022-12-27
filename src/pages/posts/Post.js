@@ -240,7 +240,7 @@ const Post = (props) => {
               placement="top"
               overlay={<Tooltip>Log in to Dislike posts!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="fa-solid fa-thumbs-down" />
             </OverlayTrigger>
           )}
           {dislike_count}
