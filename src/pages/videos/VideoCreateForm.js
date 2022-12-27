@@ -27,9 +27,9 @@ function VideoCreateForm() {
     title: "",
     content: "",
     video: "",
-    Post_location: "",
+    post_location: "",
   });
-  const { title, content, video, Post_location } = postData;
+  const { title, content, video, post_location } = postData;
 
   const videoinput = useRef(null);
   const history = useHistory();
@@ -56,7 +56,7 @@ function VideoCreateForm() {
     const formData = new FormData();
 
     formData.append("title", title);
-    formData.append("Post_location", Post_location);
+    formData.append("post_location", post_location);
     formData.append("content", content);
     formData.append("video", videoinput.current.files[0]);
 
@@ -74,7 +74,7 @@ function VideoCreateForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label>Title</Form.Label>
+        <Form.Label className={appStyles.CommentsCorlor}>Title</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -88,12 +88,12 @@ function VideoCreateForm() {
         </Alert>
       ))}
       <Form.Group>
-        <Form.Label>Location</Form.Label>
+        <Form.Label className={appStyles.CommentsCorlor}>Location</Form.Label>
         <Form.Control
           as="select"
           defaultValue="Selectsomething"
-          name="Post_location"
-          aria-label="Post_location"
+          name="post_location"
+          aria-label="post_location"
           onChange={handleChange}
         >
           <option value="other">Other</option>
@@ -114,7 +114,7 @@ function VideoCreateForm() {
       ))}
 
       <Form.Group>
-        <Form.Label>Content</Form.Label>
+        <Form.Label className={appStyles.CommentsCorlor}>Content</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}

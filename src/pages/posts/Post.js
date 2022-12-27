@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import appStyles from "../../App.module.css"
+import appStyles from "../../App.module.css";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -66,7 +66,9 @@ const Post = (props) => {
   };
   const handleFavorite = async () => {
     try {
-      const { data } = await axiosRes.post("/favorites/", { post_favorite: id });
+      const { data } = await axiosRes.post("/favorites/", {
+        post_favorite: id,
+      });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post_favorite) => {
@@ -90,7 +92,11 @@ const Post = (props) => {
         ...prevPosts,
         results: prevPosts.results.map((post_favorite) => {
           return post_favorite.id === id
-            ? { ...post_favorite, post_favorite_count: post_favorite.post_favorite_count - 1, post_favorite_id: null }
+            ? {
+                ...post_favorite,
+                post_favorite_count: post_favorite.post_favorite_count - 1,
+                post_favorite_id: null,
+              }
             : post_favorite;
         }),
       }));
@@ -177,8 +183,13 @@ const Post = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text  className={appStyles.Dark}>{content}</Card.Text>}
-        {Post_location && <Card.Text  className={appStyles.Dark}><span className="text-muted">Location</span> - <span className="font-weight-bold">{Post_location}</span></Card.Text>}
+        {content && <Card.Text className={appStyles.Dark}>{content}</Card.Text>}
+        {Post_location && (
+          <Card.Text className={appStyles.Dark}>
+            <span className="text-muted">Location</span> -{" "}
+            <span className="font-weight-bold">{Post_location}</span>
+          </Card.Text>
+        )}
         <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -236,7 +247,9 @@ const Post = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can&apos;t favorite your own post!</Tooltip>}
+              overlay={
+                <Tooltip>You can&apos;t favorite your own post!</Tooltip>
+              }
             >
               <i className="fa-solid fa-bookmark"></i>
             </OverlayTrigger>
@@ -247,11 +260,10 @@ const Post = (props) => {
           ) : currentUser ? (
             <span onClick={handleFavorite}>
               <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Click here to save a post</Tooltip>}
+                placement="top"
+                overlay={<Tooltip>Click here to save a post</Tooltip>}
               >
-
-              <i className={`fa-solid fa-bookmark ${styles.HeartOutline}`} />
+                <i className={`fa-solid fa-bookmark ${styles.HeartOutline}`} />
               </OverlayTrigger>
             </span>
           ) : (

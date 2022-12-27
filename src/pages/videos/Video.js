@@ -5,6 +5,7 @@ import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import appStyles from "../../App.module.css"
 import { MoreDropdown } from "../../components/MoreDropdown";
 const Video = (props) => {
   const {
@@ -17,6 +18,7 @@ const Video = (props) => {
     video_like_id,
     video_dislike,
     video_dislike_id,
+    post_location,
     video_favorite_id,
     title,
     content,
@@ -186,8 +188,12 @@ const Video = (props) => {
       <video src={video} controls></video>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && (
-            <Card.Text className="text-center">{content}</Card.Text>
+        {content && <Card.Text className={appStyles.Dark}>{content}</Card.Text>}
+        {post_location && (
+          <Card.Text className={appStyles.Dark}>
+            <span className="text-muted">Location</span> -{" "}
+            <span className="font-weight-bold">{post_location}</span>
+          </Card.Text>
         )}
         <div className={styles.PostBar}>
           {is_owner ? (
@@ -245,7 +251,9 @@ const Video = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can&apos;t favortie your own video!</Tooltip>}
+              overlay={
+                <Tooltip>You can&apos;t favortie your own video!</Tooltip>
+              }
             >
               <i className="fa-solid fa-bookmark" />
             </OverlayTrigger>

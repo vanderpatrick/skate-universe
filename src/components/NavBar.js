@@ -32,7 +32,6 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = <></>;
   const loggedInIcons = (
     <>
       <NavLink
@@ -119,7 +118,7 @@ const NavBar = () => {
         to="/signin"
       >
         <OverlayTrigger placement="bottom" overlay={<Tooltip>Log in</Tooltip>}>
-          <i className="fas fa-sign-in-alt">Log in</i>
+          <i className="fas fa-sign-in-alt"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink
@@ -157,7 +156,6 @@ const NavBar = () => {
           </Navbar.Brand>
           Skate Universe
         </NavLink>
-        {currentUser && addPostIcon}
         <Navbar.Toggle
           className="{styles.Test}"
           ref={ref}
