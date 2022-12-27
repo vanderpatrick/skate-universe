@@ -220,35 +220,45 @@ Testing in this application was made manually, defensive code was implemented to
 - Some where some how the database got corrupted making inpossible for new users to follow other users, and like/dislike posts. The solution was a simple database reset
 - Version control was relevante during the development of this project, eslint was an controlled issue, i've decided to use it and correct as much as possible, and then remove it, and leave it as the default version that comes with react-create-app.
 
-# Deployment :
+## Deployment
+The site was deployed to Heroku. The steps to deploy are as follows:
+1. Launch the gitpod workspace.
+2. Install ReactJS:
+```
+npx create-react-app . --use-npm
+npm start
+```
+2. Install the following packages using the command `npm install`:
+```
+react-bootstrap@1.6.3 bootstrap@4.6.0
+react-router-dom@5.3.0
+axios
+react-infinite-scroll-component
+msw --save-dev
+jwt-decode
+-g eslint
+```
+3. Git add, commit, and push changes to gitpod.
+4. Create the project app on Heroku, and link the GitHub repository by navigating to the 'Deploy' tab.
 
-## Remote Deployment (Heroku) :
+### Connecting to the API:
+1. Navigated to the Heroku app of the project DRF-API, and under the Settings tab, added the following configvars:
+- Key: CLIENT_ORIGIN | Value: https://react-app-name.herokuapp.com
+- Key: CLIENT_ORIGIN_DEV | Value: https://gitpod-browser-link.ws-eu54.gitpod.io
+2. Check that the trailing slash `\` at the end of both links has been removed, and save the configvar pairs.
+3. Install the Axios package, & create supporting `axiosDefaults.js` as shown in [Moments Walkthrough](https://github.com/Code-Institute-Solutions/moments/blob/cf955d2f2e6f70f61c92d1f9de85558d8e49f3a8/src/api/axiosDefaults.js).
 
-- Connect to your GitHub repository by searching the chosen repository and clicking connect.
-  ![Heroku deployment registry search](/static/images/heroku-deployment-github.png)
-
-- Chose the proper branch in the manual deployment and click deploy branch.
-  ![Heroku manual deployment](/static/images/heroku-deployment-deploy-branch.png)
-
-- Wait for the application to load and then click view.
-  ![Heroku deployment loading](/static/images/heroku-deployment-view.png)
-
-- After clicking view your site will be loaded.
-  ![image of the project page](/static/images/heroku-deployment-done.png)
-
-## How to fork :
-
-- In the repository, you want to fork, go to the upper right corner and click fork, then click in create fork. (random project image to show how to fork)
-  ![image of location from fork](/static/images/forking.png)
-- After "forking" wait while GitHub copies the repository into your profile.
-
-## Desktop Deployment :
-
-- In the repository click on code.
-  ![Code button from GitHub repository](/static/images/git-code.png)
-- Click on a download zip file.
-- When that is done, open with your chosen code program and download the requirements.txt with the commend.
-- pip install -r requirements.txt.
+### Deploy to Heroku:
+1. In the `scripts` section of `package.json` in gitpod, added the following command:
+```
+"heroku-prebuild": "npm install -g serve",
+```
+2. Add Procfile to project root & populate with the following:
+```
+web: serve -s build
+```
+3. Repeat the steps of git add/commit/push.
+4. Deploy the project via the deploy button on Heroku.
 
 # External Features :
 
@@ -260,19 +270,11 @@ Testing in this application was made manually, defensive code was implemented to
   - Was used to select the icons used in this project.
 - [Bootstrap](https://getbootstrap.com/)
   - Bootstrap was used as the CSS framework for this project.
-  # Credits :
+# Credits :
 
-1.  [MDBoostrap](https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw)
+1.  [Code Institute](https://codeinstitute.net/)
 
-- For providing the footer code.
-
-2.  [Codemy](https://www.youtube.com/c/CodingNepal/featured)
-
-- For providing insight into the creation of the profile and comment section.
-
-3.  [Code Institute](https://codeinstitute.net/)
-
-- Code Institute for all the support and care for me and my projects.
+- Code Institute for this walktrough, that gave me insigth at the building of this project as a stepping stone, full stack development was never so clear
 
 ## Special thanks
 
