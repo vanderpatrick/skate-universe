@@ -127,14 +127,20 @@ Testing in this application was made manually, defensive code was implemented to
 
   - if incorrect the user recivies a message poiting the fields that are incorrect
 
-![registration image](/static/images/test-registration-pass.png)
+  - Attempt
+![registration image](/src/assets/readmePics/testing-registration.png)
+  - result
+  ![registration image](/src/assets/readmePics/worked.png)
+  - this proves that the user was registerd in the database and the nav bar confirms that the user is indeed authenticated
 
 - Log in
   - After filling in the user credentials the user is redirected to the main page with full access to the application
   - The navbar confirms that the user is logged in by the addition of options that logged in users have
   - The user sees his/hers profile picture with the usernmae on the side, plus post/video crieation, regular posts favorites and video favorites nav icons,
-
-![Login image](/static/images/test-login-pass.png)
+  - attempt
+![Login image](/src/assets/readmePics/login-test.png)
+  - result 
+![Login image](/src/assets/readmePics/login%20worked.png)
 
 - Profile
   - The profile is immediately created with the account registration. Pretty neat if you ask me. It also comes with two default values one for the profile image and another for the description.
