@@ -193,7 +193,7 @@ const Video = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t like your own post!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
@@ -221,7 +221,7 @@ const Video = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't Dislike your own post!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t Dislike your own post!</Tooltip>}
             >
               <i className="fa-solid fa-thumbs-down" />
             </OverlayTrigger>
@@ -245,9 +245,9 @@ const Video = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't favortie your own video!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t favortie your own video!</Tooltip>}
             >
-              <i class="fa-solid fa-bookmark" />
+              <i className="fa-solid fa-bookmark" />
             </OverlayTrigger>
           ) : video_favorite_id ? (
             <span className="mx-2" onClick={handleRemoveFavorite}>

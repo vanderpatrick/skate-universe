@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-
+/* eslint-disable */
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
 import Asset from "../../components/Asset";
 
 import styles from "../../styles/ProfilePage.module.css";
@@ -133,7 +132,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className={`${appStyles.CommentsCorlor} text-center`}>{profile?.owner}'s posts</p>
+      <p className={`${appStyles.CommentsCorlor} text-center`}>{profile?.owner}&apos;s posts</p>
       <hr />
       {profilePosts.results.length ? (
         <InfiniteScroll
@@ -156,7 +155,7 @@ function ProfilePage() {
   const mainProfileVideos = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s Videos</p>
+      <p className="text-center">{profile?.owner}&apos;s Videos</p>
       <hr />
       {profileVideos.results.length ? (
         <InfiniteScroll

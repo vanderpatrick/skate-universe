@@ -1,4 +1,5 @@
 import styles from "./App.module.css";
+import React from "react";
 import NavBar from "./components/NavBar";
 import { Route, Switch } from "react-router-dom";
 import SignInForm from "./pages/auth/SignInForm";

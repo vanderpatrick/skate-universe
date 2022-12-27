@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Container, Carousel } from "react-bootstrap";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Profile from "./Profile";

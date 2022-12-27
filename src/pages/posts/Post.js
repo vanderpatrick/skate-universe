@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
 import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -184,7 +183,7 @@ const Post = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t like your own post!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
@@ -213,7 +212,7 @@ const Post = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't Dislike your own post!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t Dislike your own post!</Tooltip>}
             >
               <i className="fa-solid fa-thumbs-down" />
             </OverlayTrigger>
@@ -237,7 +236,7 @@ const Post = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't favorite your own post!</Tooltip>}
+              overlay={<Tooltip>You can&apos;t favorite your own post!</Tooltip>}
             >
               <i className="fa-solid fa-bookmark"></i>
             </OverlayTrigger>
