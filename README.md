@@ -162,26 +162,34 @@ Testing in this application was made manually, defensive code was implemented to
 ![liking system image](/src/assets/readmePics/testinglikes-dislikes.png)
   - result
 ![liking system image](/src/assets/readmePics/post%20likes%20owrks.png)
-
 - Unliking / removing dislikes
   - The user is also allowed to unlike the posts reflecting directly to the database.
-
-![Unlikig image](/static/images/test-unlike-pass.png)
+![Unlikig image](/src/assets/readmePics/testinglikes-dislikes.png)
 
 - Edit
   - If the user is not happy with his post / video the user is allowed to edit it.
 
-![Editing image](/static/images/test-edit-pass.png)
+![Editing image](/src/assets/readmePics/PostEditform.png)
 
 - Create
   - When logged in the user can create his posts or a video post.
 
-![Creation image](/static/images/test-post-creation-pass.png)
+![Creation image](/src/assets/readmePics/Post%20create%20form.png)
+  - result
+
+![Creation image](/src/assets/readmePics/posting%20workis.png)
+
 
 - Delete
   - the user is also allowed to delete his posts in a dynamic way where all tables related to that post are also deleted(likes/comments).
 
-![Deleting image](/static/images/test-delete-pass.png)
+- favorite
+  - the user is also allowed to delete his posts in a dynamic way where all tables related to that post are also deleted(likes/comments).
+  - before
+  ![Creation image](/src/assets/readmePics/favorites%20before.png)
+  - result 
+  ![Creation image](/src/assets/readmePics/favorite%20result.png)
+
 
 # User stories:
 
