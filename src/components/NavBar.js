@@ -91,6 +91,18 @@ const NavBar = () => {
           <i className="fa-solid fa-star"></i>
         </OverlayTrigger>
       </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/favorites"
+      >
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>Followed</Tooltip>}
+        >
+         <i className="fa-solid fa-crown"></i>
+        </OverlayTrigger>
+      </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <OverlayTrigger placement="bottom" overlay={<Tooltip>LogOut</Tooltip>}>
           <i className="fas fa-sign-out-alt"></i>

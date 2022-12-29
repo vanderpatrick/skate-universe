@@ -61,6 +61,16 @@ function App() {
               />
             )}
           />
+          <Route
+            exact
+            path="/favorites"
+            render={() => (
+              <VideoPostsPages
+                message="No results found. Adjust the search keyword or follow a user."
+                filter={`favorites_videos__owner__profile=${profile_id}&ordering=-favorites_videos__created_at&`}
+              />
+            )}
+          />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />

@@ -183,7 +183,8 @@ Testing in this application was made manually, defensive code was implemented to
   - the user is also allowed to delete his posts in a dynamic way where all tables related to that post are also deleted(likes/comments).
 
 - favorite
-  - the user is also allowed to delete his posts in a dynamic way where all tables related to that post are also deleted(likes/comments).
+  - the user is also allowed to favorite his posts
+  - The same applies to video posts
   - before
 ![Creation image](/src/assets/readmePics/favorites%20before.png)
   - result 
