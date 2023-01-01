@@ -1,5 +1,6 @@
 import styles from "./App.module.css";
 import React from "react";
+import About from "./pages/about/About";
 import NavBar from "./components/NavBar";
 import { Route, Switch } from "react-router-dom";
 import SignInForm from "./pages/auth/SignInForm";
@@ -80,6 +81,7 @@ function App() {
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/videos/:id/edit" render={() => <VideoEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/about" render={() => <About />} />
           <Route
             exact
             path="/profiles/:id/edit/username"
