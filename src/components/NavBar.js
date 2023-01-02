@@ -94,13 +94,25 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/favorites"
+        to="/following"
       >
         <OverlayTrigger
           placement="bottom"
           overlay={<Tooltip>Followed</Tooltip>}
         >
          <i className="fa-solid fa-crown"></i>
+        </OverlayTrigger>
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/About"
+      >
+        <OverlayTrigger
+          placement="bottom"
+          overlay={<Tooltip>About Us</Tooltip>}
+        >
+         <i className="fa-solid fa-address-card"></i>
         </OverlayTrigger>
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
