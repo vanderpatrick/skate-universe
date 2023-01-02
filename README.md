@@ -3,6 +3,9 @@
 ## By Patrick Alexander Lucas Van Der Flier
 
 ### [Check Skate universe](https://skate-universe.herokuapp.com/)
+#### DEPLOYED BACKEND [LINK](https://skt-drf.herokuapp.com/)
+#### DEPLOYED FRONTEND [LINK - LIVE SITE](https://skate-universe.herokuapp.com/)
+#### REPOSITORY BACKEND [REPOSITORY](https://github.com/vanderpatrick/skt-drf-api)
 
 ![Responsive image from the project](/src/assets/readmePics/responsive%20img.png)
 
