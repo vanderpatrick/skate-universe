@@ -2,9 +2,9 @@
 
 ## By Patrick Alexander Lucas Van Der Flier
 
-### [Check Skate universe](https://skate-universe.herokuapp.com/)
+
 #### DEPLOYED BACKEND [LINK](https://skt-drf.herokuapp.com/)
-#### DEPLOYED FRONTEND [LINK - LIVE SITE](https://skate-universe.herokuapp.com/)
+#### DEPLOYED FRONTEND [LINK](https://skate-universe.herokuapp.com/)
 #### REPOSITORY BACKEND [REPOSITORY](https://github.com/vanderpatrick/skt-drf-api)
 
 ![Responsive image from the project](/src/assets/readmePics/responsive%20img.png)
@@ -61,7 +61,14 @@ The Features were designed to distinguish each area with ease so the user can ex
   - Once the user is authenticated the user will be allowed to like/dislike, comment, and favorite a post/video of his, or her choosing.
   - it is simple and intuitive the user has a clear understanding of the application as a whole with just one glance.
 
-![landing / Home page image](/src/assets/readmePics/homepage.png)
+![Landing page home page](/src/assets/readmePics/homepage.png)
+
+- About page
+  - The about page was dsign to be as simple as possible for readability and fast action by the user in case of possibles issues with the application
+  - Once the user is authenticated the user will be allowed to like/dislike, comment, and favorite a post/video of his, or her choosing.
+  - it is simple and intuitive the user has a clear understanding of the application as a whole with just one glance.
+
+![About page](/src/assets/readmePics/aboutpage.png)
 
 - Post Creation
   - The user is allowed after becoming registered to create a post that consists of a unique title, a post image, a category, and the contents of the post.
@@ -287,6 +294,8 @@ I would like to thank everyone who helped me with this project.
 - My mentor.
 - Code Institute for giving the best support to develop this project.
 - And all friends involved with helping this project.
+- cornishcoder1 by recomendation of my mentor to inspire my custom models for this project
+
 
 # Media
 
